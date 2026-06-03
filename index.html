@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapid Solution — AI-Powered Social Media Growth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Particle canvas -->
+  <canvas id="particles"></canvas>
+
+  <!-- Animated grid background -->
+  <div class="grid-bg"></div>
+
+  <!-- Floating orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- ── NAV ── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Rapid<strong>Solution</strong></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#social-proof">Results</a></li>
+      </ul>
+      <button class="nav-cta" id="navCta">Watch a Demo</button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="badge reveal">
+        <span class="badge-dot"></span>
+        AI-Powered Automation Platform
+      </div>
+      <h1 class="hero-title reveal">
+        Automate Your<br />
+        <span class="gradient-text typed-wrapper">
+          <span id="typed"></span><span class="cursor">|</span>
+        </span><br />
+        On Autopilot
+      </h1>
+      <p class="hero-sub reveal">
+        Post, reply, comment, and convert leads — completely automated.<br />
+        Connect your socials and watch your audience grow while you sleep.
+      </p>
+      <div class="hero-actions reveal">
+        <button class="btn-primary pulse" id="heroCta">
+          <span>Watch a Demo</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+        </button>
+        <a href="#features" class="btn-ghost">Explore Features →</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat">
+          <span class="stat-num" data-target="10000">0</span><span>+</span>
+          <span class="stat-label">Posts Automated</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="98">0</span><span>%</span>
+          <span class="stat-label">Uptime</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="5">0</span><span>x</span>
+          <span class="stat-label">Faster Growth</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating dashboard mockup -->
+    <div class="hero-visual reveal-right">
+      <div class="dashboard-card">
+        <div class="dc-header">
+          <span class="dc-dot red"></span><span class="dc-dot yellow"></span><span class="dc-dot green"></span>
+          <span class="dc-title">Dashboard</span>
+        </div>
+        <div class="dc-body">
+          <div class="dc-stat-row">
+            <div class="dc-mini-stat">
+              <div class="dc-mini-icon post">📝</div>
+              <div>
+                <div class="dc-mini-label">New Post</div>
+                <div class="dc-mini-val">Create &amp; Publish</div>
+              </div>
+            </div>
+            <div class="dc-mini-stat">
+              <div class="dc-mini-icon queue">📋</div>
+              <div>
+                <div class="dc-mini-label">Post Queue</div>
+                <div class="dc-mini-val">12 Scheduled</div>
+              </div>
+            </div>
+          </div>
+          <div class="dc-stat-row">
+            <div class="dc-mini-stat">
+              <div class="dc-mini-icon reply">💬</div>
+              <div>
+                <div class="dc-mini-label">Auto Replies</div>
+                <div class="dc-mini-val">247 Sent Today</div>
+              </div>
+            </div>
+            <div class="dc-mini-stat">
+              <div class="dc-mini-icon lead">🔥</div>
+              <div>
+                <div class="dc-mini-label">Hot Leads</div>
+                <div class="dc-mini-val badge-red">2 New</div>
+              </div>
+            </div>
+          </div>
+          <div class="dc-chart-label">Activity — Last 7 Days</div>
+          <div class="dc-chart">
+            <div class="bar" style="--h:40%"></div>
+            <div class="bar" style="--h:65%"></div>
+            <div class="bar" style="--h:50%"></div>
+            <div class="bar" style="--h:80%"></div>
+            <div class="bar" style="--h:60%"></div>
+            <div class="bar" style="--h:90%"></div>
+            <div class="bar active" style="--h:75%"></div>
+          </div>
+          <div class="dc-live-row">
+            <span class="live-dot"></span>
+            <span class="live-text">22h ago · POST Facebook ✓</span>
+          </div>
+          <div class="dc-live-row">
+            <span class="live-dot orange"></span>
+            <span class="live-text">22h ago · SCHEDULE — 3 topics found</span>
+          </div>
+        </div>
+      </div>
+      <!-- floating badges -->
+      <div class="float-badge fb1">
+        <span>🚀</span> Post published!
+      </div>
+      <div class="float-badge fb2">
+        <span>🔥</span> Hot Lead detected
+      </div>
+      <div class="float-badge fb3">
+        <span>💬</span> Auto-reply sent
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LOGOS ── -->
+  <div class="logos-strip reveal">
+    <span class="logos-label">Works with</span>
+    <div class="logos-track">
+      <div class="logos-inner">
+        <span class="logo-pill logo-fb">📘 Facebook</span>
+        <span class="logo-pill logo-ig">📸 Instagram</span>
+        <span class="logo-pill logo-tt">🎵 TikTok</span>
+        <span class="logo-pill logo-li">💼 LinkedIn</span>
+        <span class="logo-pill logo-fb">📘 Facebook</span>
+        <span class="logo-pill logo-ig">📸 Instagram</span>
+        <span class="logo-pill logo-tt">🎵 TikTok</span>
+        <span class="logo-pill logo-li">💼 LinkedIn</span>
+        <span class="logo-pill logo-fb">📘 Facebook</span>
+        <span class="logo-pill logo-ig">📸 Instagram</span>
+        <span class="logo-pill logo-tt">🎵 TikTok</span>
+        <span class="logo-pill logo-li">💼 LinkedIn</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FEATURES ── -->
+  <section class="features" id="features">
+    <div class="section-label reveal">Features</div>
+    <h2 class="section-title reveal">Everything you need to<br /><span class="gradient-text">dominate social media</span></h2>
+    <p class="section-sub reveal">One platform. All platforms. Zero manual work.</p>
+    <div class="features-grid">
+      <div class="feature-card reveal" style="--delay:0s">
+        <div class="fc-icon">📝</div>
+        <h3>Smart Post Scheduling</h3>
+        <p>AI picks the best times to post based on your audience engagement patterns. Set it once, let it run forever.</p>
+        <div class="fc-glow"></div>
+      </div>
+      <div class="feature-card reveal" style="--delay:0.1s">
+        <div class="fc-icon">💬</div>
+        <h3>Auto Comments</h3>
+        <p>Automatically comment on trending posts in your niche with human-like, context-aware responses that drive traffic back to you.</p>
+        <div class="fc-glow"></div>
+      </div>
+      <div class="feature-card reveal" style="--delay:0.2s">
+        <div class="fc-icon">🤖</div>
+        <h3>Auto Replies</h3>
+        <p>Never miss a DM or comment. Our AI reads intent and responds intelligently — nurturing leads 24/7 without lifting a finger.</p>
+        <div class="fc-glow"></div>
+      </div>
+      <div class="feature-card reveal" style="--delay:0.3s">
+        <div class="fc-icon">🔥</div>
+        <h3>Hot Lead Detection</h3>
+        <p>Spots buying signals in DMs and comments automatically. Flags high-intent prospects so you close deals, not scroll feeds.</p>
+        <div class="fc-glow"></div>
+      </div>
+      <div class="feature-card reveal" style="--delay:0.4s">
+        <div class="fc-icon">📥</div>
+        <h3>Unified Inbox</h3>
+        <p>All DMs from all platforms in one clean inbox. Inbox Rules let you auto-sort, auto-respond, and stay completely organized.</p>
+        <div class="fc-glow"></div>
+      </div>
+      <div class="feature-card reveal" style="--delay:0.5s">
+        <div class="fc-icon">📊</div>
+        <h3>Activity Log & Analytics</h3>
+        <p>Full audit trail of every action the platform takes. See what's working, what's not, and double down on results.</p>
+        <div class="fc-glow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="how" id="how">
+    <div class="section-label reveal">How It Works</div>
+    <h2 class="section-title reveal">Up and running in<br /><span class="gradient-text">3 simple steps</span></h2>
+    <div class="steps">
+      <div class="step reveal" style="--delay:0s">
+        <div class="step-num">01</div>
+        <div class="step-line"></div>
+        <div class="step-content">
+          <h3>Connect Your Accounts</h3>
+          <p>Link Facebook, Instagram, Twitter, LinkedIn, and more in minutes. Secure OAuth — we never store your passwords.</p>
+        </div>
+      </div>
+      <div class="step reveal" style="--delay:0.15s">
+        <div class="step-num">02</div>
+        <div class="step-line"></div>
+        <div class="step-content">
+          <h3>Set Your Brand Voice</h3>
+          <p>Tell the AI your niche, tone, and goals. It learns your brand profile and writes posts that sound exactly like you.</p>
+        </div>
+      </div>
+      <div class="step reveal" style="--delay:0.3s">
+        <div class="step-num">03</div>
+        <div class="step-line last"></div>
+        <div class="step-content">
+          <h3>Watch It Grow</h3>
+          <p>Sit back while the platform posts, replies, engages, and sends you hot leads — on complete autopilot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOCIAL PROOF ── -->
+  <section class="social-proof" id="social-proof">
+    <div class="section-label reveal">Results</div>
+    <h2 class="section-title reveal">Creators love<br /><span class="gradient-text">Rapid Solution</span></h2>
+    <div class="testimonials">
+      <div class="testimonial reveal" style="--delay:0s">
+        <div class="stars">★★★★★</div>
+        <p>"Went from 2k to 18k followers in 60 days. The auto-comment feature alone tripled my reach. I barely touch the app — it just works."</p>
+        <div class="t-author">
+          <div class="t-avatar">MK</div>
+          <div>
+            <div class="t-name">Marcus K.</div>
+            <div class="t-role">Business Coach, @marcusbuilds</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal" style="--delay:0.15s">
+        <div class="stars">★★★★★</div>
+        <p>"The hot lead feature is insane. It flagged a DM that turned into a $4,500 client. I would have missed it scrolling manually."</p>
+        <div class="t-author">
+          <div class="t-avatar">SA</div>
+          <div>
+            <div class="t-name">Sarah A.</div>
+            <div class="t-role">Digital Marketing Agency Owner</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal" style="--delay:0.3s">
+        <div class="stars">★★★★★</div>
+        <p>"I run 6 brand accounts. Rapid Solution handles all of them simultaneously. It's like having 6 full-time social media managers."</p>
+        <div class="t-author">
+          <div class="t-avatar">JT</div>
+          <div>
+            <div class="t-name">James T.</div>
+            <div class="t-role">eCommerce Brand Operator</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA BANNER ── -->
+  <section class="cta-banner reveal">
+    <div class="cta-glow"></div>
+    <h2>Ready to grow on autopilot?</h2>
+    <p>Watch our live demo and see exactly how Rapid Solution can transform your social presence.</p>
+    <button class="btn-primary large pulse" id="bannerCta">
+      <span>Watch a Demo</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+    </button>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Rapid<strong>Solution</strong></span>
+      </div>
+      <p class="footer-copy">© 2026 Rapid Solution. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ── MODAL ── -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+
+      <!-- State: form -->
+      <div class="modal-body" id="formState">
+        <div class="modal-icon">🎬</div>
+        <h2 class="modal-title">Watch the Demo</h2>
+        <p class="modal-sub">Enter your details and we'll send you instant access to the full demo walkthrough.</p>
+        <form id="leadForm" novalidate>
+          <div class="form-group">
+            <label for="fname">Full Name</label>
+            <input type="text" id="fname" name="name" placeholder="e.g. Alex Johnson" autocomplete="name" required />
+            <span class="field-error" id="nameErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="femail">Email Address</label>
+            <input type="email" id="femail" name="email" placeholder="you@example.com" autocomplete="email" required />
+            <span class="field-error" id="emailErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="fphone">Phone Number</label>
+            <input type="tel" id="fphone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel" required />
+            <span class="field-error" id="phoneErr"></span>
+          </div>
+          <button type="submit" class="btn-primary full" id="submitBtn">
+            <span id="submitLabel">Get Instant Access →</span>
+            <span id="submitSpinner" class="spinner hidden"></span>
+          </button>
+          <p class="form-note">🔒 We respect your privacy. No spam, ever.</p>
+        </form>
+      </div>
+
+      <!-- State: success -->
+      <div class="modal-body hidden" id="successState">
+        <div class="success-anim">
+          <div class="check-circle">
+            <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 27l8 8 16-16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <h2 class="modal-title">You're on the list! 🎉</h2>
+        <p class="modal-sub">We've received your details. Check your inbox — the demo link is on its way. In the meantime, explore what Rapid Solution can do.</p>
+        <button class="btn-primary full" id="closeSuccess">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
