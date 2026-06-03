@@ -83,7 +83,7 @@ export default async function handler(req, res) {
         from: `"Rapid Solution" <${GMAIL_USER}>`,
         to: email,
         replyTo: GMAIL_USER,
-        subject: 'Your Rapid Solution Demo Access',
+        subject: `Thanks for your demo request, ${name}`,
         text: buildEmailText(name),   // plain-text part improves inbox placement
         html: buildEmailHTML(name),
       });
@@ -101,23 +101,21 @@ export default async function handler(req, res) {
 }
 
 function buildEmailText(name) {
-  return `Hey ${name}!
+  return `Hi ${name},
 
-Thanks for your interest in Rapid Solution. We're thrilled to have you on board!
+Thanks for requesting a demo. We've received your details and one of our specialists will reach out within 24 hours to walk you through how Rapid Solution can help you.
 
-Our team has received your details and one of our specialists will reach out to you within 24 hours to walk you through a personalized demo.
+Here's what happens next:
+1. We review your details.
+2. We send you a personalized demo link.
+3. You see exactly how it works for your accounts.
 
-What happens next:
-- Our team reviews your details
-- We send you a personalized demo link
-- You see exactly how to automate your growth
+If you have any questions, just reply to this email — it comes straight to our team.
 
-Got questions? Just reply to this email — we're here to help.
-
-Cheers,
+Best regards,
 The Rapid Solution Team
 
-© 2026 Rapid Solution. All rights reserved.`;
+You received this email because you requested a demo at Rapid Solution.`;
 }
 
 function buildEmailHTML(name) {
@@ -127,62 +125,46 @@ function buildEmailHTML(name) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Rapid Solution</title>
+  <title>Rapid Solution</title>
 </head>
-<body style="margin:0;padding:0;background:#080b14;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#e8eaf0;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#080b14;padding:40px 20px;">
+<body style="margin:0;padding:0;background:#f4f5f7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:#1a1d24;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4f5f7;padding:32px 16px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;background:#0e1220;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
-
+        <table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;background:#ffffff;border-radius:8px;border:1px solid #e6e8eb;">
           <tr>
-            <td style="background:linear-gradient(135deg,#6c63ff 0%,#a78bfa 100%);padding:40px 32px;text-align:center;">
-              <div style="font-size:32px;margin-bottom:8px;">⚡</div>
-              <h1 style="margin:0;font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.5px;">Welcome to Rapid Solution</h1>
+            <td style="padding:32px 36px;">
+
+              <p style="margin:0 0 24px;font-size:18px;font-weight:700;color:#6c63ff;">Rapid Solution</p>
+
+              <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#1a1d24;">Hi ${escapeHtml(name)},</p>
+
+              <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#3a3f4a;">
+                Thanks for requesting a demo. We've received your details and one of our specialists will reach out within 24 hours to walk you through how Rapid Solution can help you.
+              </p>
+
+              <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#3a3f4a;">
+                Here's what happens next:
+              </p>
+              <p style="margin:0 0 8px;font-size:16px;line-height:1.6;color:#3a3f4a;">1. We review your details.</p>
+              <p style="margin:0 0 8px;font-size:16px;line-height:1.6;color:#3a3f4a;">2. We send you a personalized demo link.</p>
+              <p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:#3a3f4a;">3. You see exactly how it works for your accounts.</p>
+
+              <p style="margin:0 0 24px;font-size:16px;line-height:1.6;color:#3a3f4a;">
+                If you have any questions, just reply to this email — it comes straight to our team.
+              </p>
+
+              <p style="margin:0;font-size:16px;line-height:1.6;color:#1a1d24;">
+                Best regards,<br />
+                The Rapid Solution Team
+              </p>
+
+              <p style="margin:28px 0 0;padding-top:20px;border-top:1px solid #e6e8eb;font-size:13px;line-height:1.5;color:#8a909b;">
+                You received this email because you requested a demo at Rapid Solution.
+              </p>
+
             </td>
           </tr>
-
-          <tr>
-            <td style="padding:40px 32px;">
-              <h2 style="margin:0 0 16px;font-size:22px;font-weight:700;color:#fff;">Hey ${escapeHtml(name)}! 🎉</h2>
-              <p style="margin:0 0 16px;font-size:16px;line-height:1.65;color:#c4c9d4;">
-                Thanks for your interest in <strong style="color:#a78bfa;">Rapid Solution</strong>. We're thrilled to have you on board!
-              </p>
-              <p style="margin:0 0 24px;font-size:16px;line-height:1.65;color:#c4c9d4;">
-                Our team has received your details and one of our specialists will reach out to you within <strong style="color:#fff;">24 hours</strong> to walk you through a personalized demo.
-              </p>
-
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#141928;border-radius:12px;padding:24px;margin-bottom:28px;">
-                <tr>
-                  <td>
-                    <p style="margin:0 0 12px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#a78bfa;">What happens next</p>
-                    <p style="margin:0 0 10px;font-size:15px;line-height:1.6;color:#e8eaf0;">✦ Our team reviews your details</p>
-                    <p style="margin:0 0 10px;font-size:15px;line-height:1.6;color:#e8eaf0;">✦ We send you a personalized demo link</p>
-                    <p style="margin:0;font-size:15px;line-height:1.6;color:#e8eaf0;">✦ You see exactly how to automate your growth</p>
-                  </td>
-                </tr>
-              </table>
-
-              <p style="margin:0 0 16px;font-size:15px;line-height:1.65;color:#c4c9d4;">
-                In the meantime, here's a preview of what's coming your way — auto posting, smart replies, hot lead detection, and a unified inbox across Facebook, Instagram, TikTok, and LinkedIn.
-              </p>
-              <p style="margin:0;font-size:15px;line-height:1.65;color:#c4c9d4;">
-                Got questions? Just reply to this email — we're here to help.
-              </p>
-
-              <p style="margin:32px 0 0;font-size:15px;color:#c4c9d4;">
-                Cheers,<br />
-                <strong style="color:#fff;">The Rapid Solution Team</strong>
-              </p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="background:#0a0d18;padding:24px 32px;text-align:center;border-top:1px solid rgba(255,255,255,0.06);">
-              <p style="margin:0;font-size:12px;color:#8892a4;">© 2026 Rapid Solution. All rights reserved.</p>
-            </td>
-          </tr>
-
         </table>
       </td>
     </tr>
