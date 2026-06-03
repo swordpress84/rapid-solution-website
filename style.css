@@ -95,7 +95,12 @@ body {
   width: 100%; max-width: 1200px; margin: auto;
   display: flex; align-items: center; gap: 40px;
 }
-.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.logo:hover { opacity: 0.85; transform: translateY(-1px); }
 .logo-icon { font-size: 24px; filter: drop-shadow(0 0 8px var(--accent)); }
 .logo-text { font-size: 18px; font-weight: 500; color: var(--text); letter-spacing: -0.3px; }
 .logo-text strong { font-weight: 800; background: linear-gradient(135deg, var(--accent), #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
