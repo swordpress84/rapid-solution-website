@@ -761,23 +761,157 @@ body {
 }
 .check-circle svg { width: 100%; height: 100%; }
 
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .hero { flex-direction: column; gap: 60px; padding: 100px 24px 60px; }
-  .hero-visual { flex: none; width: 100%; max-width: 420px; margin: 0 auto; }
-  .float-badge { display: none; }
+/* ──────────────────────────────────────────────
+   RESPONSIVE
+─────────────────────────────────────────────── */
+
+/* ── Tablet landscape and below (≤1024px) ── */
+@media (max-width: 1024px) {
   .nav { padding: 0 24px; }
-  .nav-links { display: none; }
-  .features, .how, .social-proof { padding: 0 24px; }
-  .logos-strip { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
-  .cta-banner { padding: 80px 24px; }
-  .footer { padding: 24px; }
-  .hero-stats { flex-wrap: wrap; gap: 20px; }
-  .stat-divider { display: none; }
+  .nav-links { gap: 24px; }
+  .hero { padding: 110px 24px 70px; gap: 40px; }
+  .hero-visual { flex: 0 0 360px; }
+  .features, .how, .social-proof, .pricing { padding: 0 24px; margin-bottom: 100px; }
+  .logos-strip { padding: 0 24px; margin-bottom: 70px; }
+  .pricing-grid { gap: 0 16px; }
+  .pc { padding: 32px 24px 28px; }
+  .pc.popular { padding: 38px 26px 30px; }
 }
 
-@media (max-width: 500px) {
-  .modal { padding: 40px 24px 32px; }
-  .features-grid { grid-template-columns: 1fr; }
-  .testimonials { grid-template-columns: 1fr; }
+/* ── Tablet portrait (≤900px) ── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-cta { padding: 9px 18px; font-size: 13px; }
+
+  .hero { flex-direction: column; gap: 50px; padding: 100px 24px 60px; min-height: auto; }
+  .hero-content { width: 100%; }
+  .hero-visual { flex: none; width: 100%; max-width: 380px; margin: 0 auto; }
+  .float-badge { display: none; }
+
+  .hero-stats { flex-wrap: wrap; gap: 24px; }
+  .stat-divider { display: none; }
+
+  .section-sub { margin-bottom: 48px; }
+
+  /* Pricing stacks */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 460px; margin: 0 auto;
+    gap: 20px;
+  }
+  .pricing-header { margin-bottom: 40px; }
+  .pc.popular { padding: 36px 28px 30px; }
+
+  .cta-banner { padding: 70px 24px; margin-bottom: 80px; }
+  .footer { padding: 24px; }
+  .footer-inner { justify-content: center; text-align: center; }
+
+  /* Steps */
+  .step { gap: 18px; padding: 24px 0; }
+  .step-num { font-size: 38px; min-width: 56px; }
+  .step-content h3 { font-size: 20px; }
+
+  /* Logos strip */
+  .logos-strip { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+/* ── Mobile (≤640px) ── */
+@media (max-width: 640px) {
+  .nav { padding: 0 18px; height: 64px; }
+  .logo-text { font-size: 16px; }
+  .logo-icon { font-size: 20px; }
+  .nav-cta { padding: 8px 14px; font-size: 12px; }
+
+  .hero { padding: 90px 18px 50px; }
+  .hero-title { font-size: clamp(32px, 9vw, 44px); letter-spacing: -1px; }
+  .hero-sub { font-size: 16px; }
+  .hero-sub br { display: none; }
+
+  .badge { font-size: 12px; padding: 5px 13px; margin-bottom: 22px; }
+
+  .hero-actions { gap: 14px; }
+  .btn-primary { padding: 13px 22px; font-size: 15px; width: 100%; justify-content: center; }
+  .btn-ghost { width: 100%; text-align: center; }
+
+  .hero-stats { gap: 18px; width: 100%; justify-content: space-between; }
+  .stat-num { font-size: 28px; }
+  .stat-num + span { font-size: 22px; }
+  .stat-label { font-size: 12px; }
+
+  .dashboard-card { animation: none; }
+  .hero-visual { max-width: 100%; }
+
+  /* Sections */
+  .features, .how, .social-proof, .pricing { padding: 0 18px; margin-bottom: 80px; }
+  .section-title { font-size: clamp(26px, 7vw, 36px); letter-spacing: -1px; }
+  .section-sub { font-size: 15px; margin-bottom: 36px; }
+  .section-label { font-size: 11px; letter-spacing: 2px; margin-bottom: 12px; }
+
+  /* Feature cards */
+  .features-grid { grid-template-columns: 1fr; gap: 14px; }
+  .feature-card { padding: 24px; }
+  .feature-card h3 { font-size: 17px; }
+  .feature-card p { font-size: 14px; }
+
+  /* Steps */
+  .step { padding: 20px 0; gap: 14px; }
+  .step-num { font-size: 32px; min-width: 44px; }
+  .step-line { min-height: 60px; }
+  .step-content h3 { font-size: 18px; }
+  .step-content p { font-size: 14px; }
+
+  /* Testimonials */
+  .testimonials { grid-template-columns: 1fr; gap: 16px; }
+  .testimonial { padding: 24px; }
+  .testimonial > p { font-size: 14px; }
+
+  /* Pricing */
+  .pricing { margin-bottom: 80px; }
+  .pricing-grid { max-width: 100%; gap: 16px; }
+  .pc { padding: 28px 22px 24px; border-radius: 18px; }
+  .pc.popular { padding: 32px 22px 26px; }
+  .pc-num { font-size: 46px; letter-spacing: -2px; }
+  .pc-sym { font-size: 18px; padding-bottom: 6px; }
+  .pc-desc { font-size: 13px; min-height: 0; margin-bottom: 0; }
+  .pc-list { gap: 10px; margin-bottom: 24px; }
+  .pc-list li { font-size: 13px; }
+  .pc-cta { padding: 13px; font-size: 14px; }
+
+  /* CTA banner */
+  .cta-banner { padding: 60px 18px; margin-bottom: 60px; }
+  .cta-banner h2 { font-size: clamp(26px, 7vw, 36px); }
+  .cta-banner p { font-size: 15px; margin-bottom: 32px; }
+  .btn-primary.large { padding: 15px 28px; font-size: 16px; }
+
+  /* Logos strip */
+  .logos-strip { padding: 0 18px; margin-bottom: 60px; }
+  .logo-pill { font-size: 12px; padding: 7px 14px; }
+
+  /* Footer */
+  .footer { padding: 22px 18px; }
+  .footer-copy { font-size: 12px; }
+
+  /* Modal */
+  .modal { padding: 36px 22px 28px; border-radius: 20px; }
+  .modal-icon { font-size: 40px; }
+  .modal-title { font-size: 22px; }
+  .modal-sub { font-size: 14px; margin-bottom: 22px; }
+  .form-group input { padding: 11px 14px; font-size: 14px; }
+}
+
+/* ── Very small phones (≤380px) ── */
+@media (max-width: 380px) {
+  .nav-cta { padding: 7px 12px; font-size: 11px; }
+  .logo-text { font-size: 15px; }
+  .hero-title { font-size: 30px; }
+  .hero-stats { gap: 12px; }
+  .stat-num { font-size: 24px; }
+  .pc-num { font-size: 40px; }
+}
+
+/* ── Disable hover-only effects on touch devices ── */
+@media (hover: none) {
+  .pc:hover { transform: none !important; }
+  .feature-card:hover { transform: none; }
+  .testimonial:hover { transform: none; }
 }

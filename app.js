@@ -178,23 +178,25 @@ function resetModal() {
   setLoading(false);
 }
 
-/* ── Pricing card 3D tilt ── */
-document.querySelectorAll('.pc').forEach(card => {
-  const wrap = card.closest('.pc-wrap');
-  wrap.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = rect.width  / 2;
-    const cy = rect.height / 2;
-    const rotX = ((y - cy) / cy) * -7;
-    const rotY = ((x - cx) / cx) *  7;
-    card.style.transform = `perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(10px)`;
+/* ── Pricing card 3D tilt (desktop / mouse-only) ── */
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.querySelectorAll('.pc').forEach(card => {
+    const wrap = card.closest('.pc-wrap');
+    wrap.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = rect.width  / 2;
+      const cy = rect.height / 2;
+      const rotX = ((y - cy) / cy) * -7;
+      const rotY = ((x - cx) / cx) *  7;
+      card.style.transform = `perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(10px)`;
+    });
+    wrap.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
   });
-  wrap.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
-});
+}
 
 /* ── Form validation ── */
 function clearErrors() {
