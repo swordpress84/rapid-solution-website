@@ -296,74 +296,103 @@
 
   <!-- ── PRICING ── -->
   <section class="pricing" id="pricing">
-    <div class="section-label reveal">Pricing</div>
-    <h2 class="section-title reveal">Simple, transparent<br /><span class="gradient-text">pricing that scales</span></h2>
-    <p class="section-sub reveal">No hidden fees. Cancel anytime.</p>
+    <div class="pricing-bg-orb orb-a"></div>
+    <div class="pricing-bg-orb orb-b"></div>
+
+    <div class="pricing-header">
+      <div class="section-label reveal">Pricing</div>
+      <h2 class="section-title reveal">Choose your<br /><span class="gradient-text">growth plan</span></h2>
+      <p class="section-sub reveal">No contracts. No hidden fees. Cancel anytime.</p>
+    </div>
 
     <div class="pricing-grid">
 
       <!-- Starter -->
-      <div class="pricing-card reveal" style="--delay:0s">
-        <div class="pc-plan">Starter</div>
-        <div class="pc-price">
-          <span class="pc-currency">৳</span>
-          <span class="pc-amount">1,500</span>
-          <span class="pc-period">/month</span>
+      <div class="pc-wrap reveal" style="--delay:0s">
+        <div class="pc" id="pc1">
+          <div class="pc-top">
+            <span class="pc-tag">Starter</span>
+            <div class="pc-price-row">
+              <span class="pc-sym">৳</span>
+              <span class="pc-num">1,500</span>
+              <span class="pc-mo">/mo</span>
+            </div>
+            <p class="pc-desc">Perfect for solo creators ready to put their social presence on autopilot.</p>
+          </div>
+          <div class="pc-divider"></div>
+          <ul class="pc-list">
+            <li><span class="pci pci-green">✦</span>Auto Post Scheduling</li>
+            <li><span class="pci pci-green">✦</span>Auto Comments</li>
+            <li><span class="pci pci-green">✦</span>Auto Replies</li>
+            <li><span class="pci pci-green">✦</span>Hot Lead Detection</li>
+            <li><span class="pci pci-green">✦</span>Unified Inbox</li>
+            <li class="pc-dim"><span class="pci pci-dim">✦</span>Advanced Analytics</li>
+            <li class="pc-dim"><span class="pci pci-dim">✦</span>Priority Support</li>
+            <li class="pc-dim"><span class="pci pci-dim">✦</span>Dedicated Manager</li>
+          </ul>
+          <button class="pc-cta outline" id="pricingCta1">Get Started →</button>
         </div>
-        <p class="pc-desc">Perfect for creators and solo entrepreneurs ready to automate their growth.</p>
-        <ul class="pc-features">
-          <li><span class="pc-check">✓</span> Auto Post Scheduling</li>
-          <li><span class="pc-check">✓</span> Auto Comments</li>
-          <li><span class="pc-check">✓</span> Auto Replies</li>
-          <li><span class="pc-check">✓</span> Hot Lead Detection</li>
-          <li><span class="pc-check">✓</span> Unified Inbox</li>
-          <li><span class="pc-cross">✗</span> Advanced Analytics</li>
-          <li><span class="pc-cross">✗</span> Priority Support</li>
-        </ul>
-        <button class="pc-btn" id="pricingCta1">Get Started →</button>
       </div>
 
       <!-- Growth — Most Popular -->
-      <div class="pricing-card popular reveal" style="--delay:0.15s">
-        <div class="popular-badge">⭐ Most Popular</div>
-        <div class="pc-plan">Growth</div>
-        <div class="pc-price">
-          <span class="pc-currency">৳</span>
-          <span class="pc-amount">2,500</span>
-          <span class="pc-period">/month</span>
+      <div class="pc-wrap popular-wrap reveal" style="--delay:0.12s">
+        <div class="pc-glow-ring"></div>
+        <div class="pc popular" id="pc2">
+          <div class="pop-badge">
+            <span class="pop-star">✦</span> Most Popular
+          </div>
+          <div class="pc-top">
+            <span class="pc-tag pop-tag">Growth</span>
+            <div class="pc-price-row">
+              <span class="pc-sym pop-sym">৳</span>
+              <span class="pc-num pop-num">2,500</span>
+              <span class="pc-mo">/mo</span>
+            </div>
+            <p class="pc-desc">The sweet spot for growing brands who need results, fast.</p>
+          </div>
+          <div class="pc-divider pop-divider"></div>
+          <ul class="pc-list">
+            <li><span class="pci pci-purple">✦</span>Auto Post Scheduling</li>
+            <li><span class="pci pci-purple">✦</span>Auto Comments</li>
+            <li><span class="pci pci-purple">✦</span>Auto Replies</li>
+            <li><span class="pci pci-purple">✦</span>Hot Lead Detection</li>
+            <li><span class="pci pci-purple">✦</span>Unified Inbox</li>
+            <li><span class="pci pci-purple">✦</span>Advanced Analytics</li>
+            <li><span class="pci pci-purple">✦</span>Priority Support</li>
+            <li class="pc-dim"><span class="pci pci-dim">✦</span>Dedicated Manager</li>
+          </ul>
+          <button class="pc-cta filled" id="pricingCta2">
+            <span class="pc-cta-text">Get Started</span>
+            <span class="pc-cta-shine"></span>
+          </button>
         </div>
-        <p class="pc-desc">For growing brands that need more accounts, deeper insights and priority support.</p>
-        <ul class="pc-features">
-          <li><span class="pc-check">✓</span> Auto Post Scheduling</li>
-          <li><span class="pc-check">✓</span> Auto Comments</li>
-          <li><span class="pc-check">✓</span> Auto Replies</li>
-          <li><span class="pc-check">✓</span> Hot Lead Detection</li>
-          <li><span class="pc-check">✓</span> Unified Inbox</li>
-          <li><span class="pc-check">✓</span> Advanced Analytics</li>
-          <li><span class="pc-check">✓</span> Priority Support</li>
-        </ul>
-        <button class="pc-btn popular-btn" id="pricingCta2">Get Started →</button>
       </div>
 
       <!-- Agency -->
-      <div class="pricing-card reveal" style="--delay:0.3s">
-        <div class="pc-plan">Agency</div>
-        <div class="pc-price">
-          <span class="pc-currency">৳</span>
-          <span class="pc-amount">4,000</span>
-          <span class="pc-period">/month</span>
+      <div class="pc-wrap reveal" style="--delay:0.24s">
+        <div class="pc" id="pc3">
+          <div class="pc-top">
+            <span class="pc-tag">Agency</span>
+            <div class="pc-price-row">
+              <span class="pc-sym">৳</span>
+              <span class="pc-num">4,000</span>
+              <span class="pc-mo">/mo</span>
+            </div>
+            <p class="pc-desc">Full-scale automation for agencies managing multiple brands at once.</p>
+          </div>
+          <div class="pc-divider"></div>
+          <ul class="pc-list">
+            <li><span class="pci pci-gold">✦</span>Auto Post Scheduling</li>
+            <li><span class="pci pci-gold">✦</span>Auto Comments</li>
+            <li><span class="pci pci-gold">✦</span>Auto Replies</li>
+            <li><span class="pci pci-gold">✦</span>Hot Lead Detection</li>
+            <li><span class="pci pci-gold">✦</span>Unified Inbox</li>
+            <li><span class="pci pci-gold">✦</span>Advanced Analytics</li>
+            <li><span class="pci pci-gold">✦</span>Priority Support</li>
+            <li><span class="pci pci-gold">✦</span>Dedicated Manager</li>
+          </ul>
+          <button class="pc-cta outline gold-outline" id="pricingCta3">Get Started →</button>
         </div>
-        <p class="pc-desc">For agencies managing multiple brands with unlimited scale and white-label options.</p>
-        <ul class="pc-features">
-          <li><span class="pc-check">✓</span> Auto Post Scheduling</li>
-          <li><span class="pc-check">✓</span> Auto Comments</li>
-          <li><span class="pc-check">✓</span> Auto Replies</li>
-          <li><span class="pc-check">✓</span> Hot Lead Detection</li>
-          <li><span class="pc-check">✓</span> Unified Inbox</li>
-          <li><span class="pc-check">✓</span> Advanced Analytics</li>
-          <li><span class="pc-check">✓</span> Dedicated Account Manager</li>
-        </ul>
-        <button class="pc-btn" id="pricingCta3">Get Started →</button>
       </div>
 
     </div>
