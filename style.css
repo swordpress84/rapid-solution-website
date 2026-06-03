@@ -358,7 +358,7 @@ body {
 /* ── Sections ── */
 .features, .how, .social-proof {
   position: relative; z-index: 1;
-  max-width: 1200px; margin: 0 auto 120px;
+  max-width: 1200px; margin: 0 auto 70px;
   padding: 0 40px;
 }
 
@@ -455,7 +455,7 @@ body {
 /* ── Pricing ── */
 .pricing {
   position: relative; z-index: 1;
-  max-width: 1240px; margin: 0 auto 140px;
+  max-width: 1240px; margin: 0 auto 80px;
   padding: 0 40px;
   overflow: visible;
 }
@@ -665,8 +665,8 @@ body {
 .cta-banner {
   position: relative; z-index: 1;
   text-align: center;
-  padding: 100px 40px;
-  max-width: 760px; margin: 0 auto 120px;
+  padding: 80px 40px;
+  max-width: 760px; margin: 0 auto 60px;
 }
 .cta-glow {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
@@ -786,7 +786,7 @@ body {
   .nav-links { gap: 24px; }
   .hero { padding: 110px 24px 70px; gap: 40px; }
   .hero-visual { flex: 0 0 360px; }
-  .features, .how, .social-proof, .pricing { padding: 0 24px; margin-bottom: 100px; }
+  .features, .how, .social-proof, .pricing { padding: 0 24px; margin-bottom: 60px; }
   .logos-strip { padding: 0 24px; margin-bottom: 70px; }
   .pricing-grid { gap: 0 16px; }
   .pc { padding: 32px 24px 28px; }
@@ -817,7 +817,7 @@ body {
   .pricing-header { margin-bottom: 40px; }
   .pc.popular { padding: 36px 28px 30px; }
 
-  .cta-banner { padding: 70px 24px; margin-bottom: 80px; }
+  .cta-banner { padding: 60px 24px; margin-bottom: 50px; }
   .footer { padding: 24px; }
   .footer-inner { justify-content: center; text-align: center; }
 
@@ -857,7 +857,7 @@ body {
   .hero-visual { max-width: 100%; }
 
   /* Sections */
-  .features, .how, .social-proof, .pricing { padding: 0 18px; margin-bottom: 80px; }
+  .features, .how, .social-proof, .pricing { padding: 0 18px; margin-bottom: 50px; }
   .section-title { font-size: clamp(26px, 7vw, 36px); letter-spacing: -1px; }
   .section-sub { font-size: 15px; margin-bottom: 36px; }
   .section-label { font-size: 11px; letter-spacing: 2px; margin-bottom: 12px; }
@@ -881,7 +881,7 @@ body {
   .testimonial > p { font-size: 14px; }
 
   /* Pricing */
-  .pricing { margin-bottom: 80px; }
+  .pricing { margin-bottom: 50px; }
   .pricing-grid { max-width: 100%; gap: 16px; }
   .pc { padding: 28px 22px 24px; border-radius: 18px; }
   .pc.popular { padding: 32px 22px 26px; }
@@ -893,7 +893,7 @@ body {
   .pc-cta { padding: 13px; font-size: 14px; }
 
   /* CTA banner */
-  .cta-banner { padding: 60px 18px; margin-bottom: 60px; }
+  .cta-banner { padding: 50px 18px; margin-bottom: 40px; }
   .cta-banner h2 { font-size: clamp(26px, 7vw, 36px); }
   .cta-banner p { font-size: 15px; margin-bottom: 32px; }
   .btn-primary.large { padding: 15px 28px; font-size: 16px; }
