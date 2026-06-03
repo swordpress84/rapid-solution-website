@@ -1,0 +1,11 @@
+# Credentials — never push real config
+config.js
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor folders
+.vscode/
+.idea/

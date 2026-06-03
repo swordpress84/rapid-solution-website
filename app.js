@@ -1,7 +1,4 @@
-/* ── Config — replace with your real Airtable details ── */
-const AIRTABLE_BASE_ID = 'YOUR_BASE_ID';
-const AIRTABLE_TABLE   = 'YOUR_TABLE_NAME';
-const AIRTABLE_PAT     = 'YOUR_PERSONAL_ACCESS_TOKEN';
+/* Credentials are loaded from config.js (gitignored). See config.example.js. */
 
 /* ── Particle system ── */
 (function initParticles() {
