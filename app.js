@@ -162,6 +162,9 @@ document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('heroCta').addEventListener('click', openModal);
 document.getElementById('navCta').addEventListener('click', openModal);
 document.getElementById('bannerCta').addEventListener('click', openModal);
+document.getElementById('pricingCta1').addEventListener('click', openModal);
+document.getElementById('pricingCta2').addEventListener('click', openModal);
+document.getElementById('pricingCta3').addEventListener('click', openModal);
 document.getElementById('closeSuccess').addEventListener('click', closeModal);
 
 overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
