@@ -37,6 +37,7 @@ body {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  background: transparent;
 }
 
 /* ── Grid background ── */
@@ -80,9 +81,8 @@ body {
   height: 72px;
   display: flex;
   align-items: center;
-  background: rgba(8,11,20,0);       /* always dark-tinted, never white */
-  backdrop-filter: blur(0px);        /* pre-initialized — prevents white flash */
-  transition: background 0.3s, backdrop-filter 0.3s, border-bottom 0.3s;
+  background: rgba(8,11,20,0);
+  transition: background 0.3s, border-bottom 0.3s;
 }
 .nav.scrolled {
   background: rgba(8,11,20,0.85);
