@@ -1,3 +1,5 @@
+import nodemailer from 'nodemailer';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -39,20 +41,21 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Airtable submission failed' });
   }
 
-  /* ── 2. Send confirmation email via Resend ── */
+  /* ── 2. Send confirmation email via Gmail SMTP ── */
   try {
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,        // your.email@gmail.com
+        pass: process.env.GMAIL_APP_PASSWORD, // 16-char app password (no spaces)
       },
-      body: JSON.stringify({
-        from: process.env.EMAIL_FROM,           // e.g. "Rapid Solution <hello@yourdomain.com>"
-        to: [email],
-        subject: '🎬 Your Rapid Solution Demo Access',
-        html: buildEmailHTML(name),
-      }),
+    });
+
+    await transporter.sendMail({
+      from: `"Rapid Solution" <${process.env.GMAIL_USER}>`,
+      to: email,
+      subject: 'Your Rapid Solution Demo Access',
+      html: buildEmailHTML(name),
     });
   } catch (err) {
     /* Email failure is non-blocking — lead is already saved */
@@ -77,7 +80,6 @@ function buildEmailHTML(name) {
       <td align="center">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;background:#0e1220;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
 
-          <!-- Header -->
           <tr>
             <td style="background:linear-gradient(135deg,#6c63ff 0%,#a78bfa 100%);padding:40px 32px;text-align:center;">
               <div style="font-size:32px;margin-bottom:8px;">⚡</div>
@@ -85,7 +87,6 @@ function buildEmailHTML(name) {
             </td>
           </tr>
 
-          <!-- Body -->
           <tr>
             <td style="padding:40px 32px;">
               <h2 style="margin:0 0 16px;font-size:22px;font-weight:700;color:#fff;">Hey ${escapeHtml(name)}! 🎉</h2>
@@ -96,7 +97,6 @@ function buildEmailHTML(name) {
                 Our team has received your details and one of our specialists will reach out to you within <strong style="color:#fff;">24 hours</strong> to walk you through a personalized demo.
               </p>
 
-              <!-- What's next box -->
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#141928;border-radius:12px;padding:24px;margin-bottom:28px;">
                 <tr>
                   <td>
@@ -122,12 +122,9 @@ function buildEmailHTML(name) {
             </td>
           </tr>
 
-          <!-- Footer -->
           <tr>
             <td style="background:#0a0d18;padding:24px 32px;text-align:center;border-top:1px solid rgba(255,255,255,0.06);">
-              <p style="margin:0;font-size:12px;color:#8892a4;">
-                © 2026 Rapid Solution. All rights reserved.
-              </p>
+              <p style="margin:0;font-size:12px;color:#8892a4;">© 2026 Rapid Solution. All rights reserved.</p>
             </td>
           </tr>
 

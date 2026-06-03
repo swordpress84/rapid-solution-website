@@ -1,6 +1,10 @@
 # Credentials — never push real config
 config.js
 
+# Node
+node_modules/
+package-lock.json
+
 # OS junk
 .DS_Store
 Thumbs.db
