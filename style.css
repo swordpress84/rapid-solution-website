@@ -16,7 +16,11 @@
   --radius-sm: 10px;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);           /* kills white overscroll at top */
+  overscroll-behavior: none;       /* prevents rubber-band white flash */
+}
 
 body {
   font-family: 'Inter', sans-serif;
@@ -24,6 +28,7 @@ body {
   color: var(--text);
   overflow-x: hidden;
   min-height: 100vh;
+  overscroll-behavior: none;
 }
 
 /* ── Particles canvas ── */
@@ -75,6 +80,8 @@ body {
   height: 72px;
   display: flex;
   align-items: center;
+  background: rgba(8,11,20,0);       /* always dark-tinted, never white */
+  backdrop-filter: blur(0px);        /* pre-initialized — prevents white flash */
   transition: background 0.3s, backdrop-filter 0.3s, border-bottom 0.3s;
 }
 .nav.scrolled {
