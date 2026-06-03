@@ -82,12 +82,14 @@ body {
   display: flex;
   align-items: center;
   background: rgba(8,11,20,0);
-  transition: background 0.3s, border-bottom 0.3s;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0) inset, 0 1px 0 rgba(255,255,255,0);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 .nav.scrolled {
   background: rgba(8,11,20,0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
 }
 .nav-inner {
   width: 100%; max-width: 1200px; margin: auto;
