@@ -20,6 +20,16 @@ html {
   scroll-behavior: smooth;
   background: var(--bg);           /* kills white overscroll at top */
   overscroll-behavior: none;       /* prevents rubber-band white flash */
+  scroll-padding-top: 90px;        /* anchor offset for fixed nav */
+}
+
+/* Per-section scroll offset so headings aren't hidden under nav */
+.features, .how, .social-proof, .pricing, .hero {
+  scroll-margin-top: 90px;
+}
+@media (max-width: 640px) {
+  html { scroll-padding-top: 80px; }
+  .features, .how, .social-proof, .pricing, .hero { scroll-margin-top: 80px; }
 }
 
 body {
