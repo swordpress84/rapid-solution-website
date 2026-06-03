@@ -254,11 +254,17 @@ document.getElementById('leadForm').addEventListener('submit', async e => {
   setLoading(true);
 
   try {
-    await submitToAirtable(name.trim(), email.trim(), phone.trim());
+    const result = await submitToAirtable(name.trim(), email.trim(), phone.trim());
+    /* Surface email status for debugging — check the browser console */
+    if (result && result.emailSent === false) {
+      console.warn('Lead saved, but confirmation email did NOT send:', result.emailError);
+    } else if (result && result.emailSent) {
+      console.log('Lead saved and confirmation email sent ✓');
+    }
     document.getElementById('formState').classList.add('hidden');
     document.getElementById('successState').classList.remove('hidden');
   } catch (err) {
-    console.error('Airtable error:', err);
+    console.error('Submission error:', err);
     /* Graceful fallback: still show success to avoid poor UX on config errors */
     document.getElementById('formState').classList.add('hidden');
     document.getElementById('successState').classList.remove('hidden');

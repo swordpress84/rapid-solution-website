@@ -1,11 +1,30 @@
 import nodemailer from 'nodemailer';
 
+/* App passwords are often pasted WITH spaces ("abcd efgh ijkl mnop").
+   Gmail rejects that — strip all whitespace defensively. */
+const GMAIL_USER = (process.env.GMAIL_USER || '').trim();
+const GMAIL_PASS = (process.env.GMAIL_APP_PASSWORD || '').replace(/\s/g, '');
+
 export default async function handler(req, res) {
+  /* ── Health check: visit /api/submit in a browser to verify config ── */
+  if (req.method === 'GET') {
+    return res.status(200).json({
+      ok: true,
+      env: {
+        AIRTABLE_BASE_ID: !!process.env.AIRTABLE_BASE_ID,
+        AIRTABLE_TABLE: !!process.env.AIRTABLE_TABLE,
+        AIRTABLE_PAT: !!process.env.AIRTABLE_PAT,
+        GMAIL_USER: GMAIL_USER || '(missing)',
+        GMAIL_APP_PASSWORD_length: GMAIL_PASS.length, // should be 16
+      },
+    });
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, phone } = req.body;
+  const { name, email, phone } = req.body || {};
 
   if (!name || !email || !phone) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -42,27 +61,41 @@ export default async function handler(req, res) {
   }
 
   /* ── 2. Send confirmation email via Gmail SMTP ── */
-  try {
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER,        // your.email@gmail.com
-        pass: process.env.GMAIL_APP_PASSWORD, // 16-char app password (no spaces)
-      },
-    });
+  let emailSent = false;
+  let emailError = null;
 
-    await transporter.sendMail({
-      from: `"Rapid Solution" <${process.env.GMAIL_USER}>`,
-      to: email,
-      subject: 'Your Rapid Solution Demo Access',
-      html: buildEmailHTML(name),
-    });
-  } catch (err) {
-    /* Email failure is non-blocking — lead is already saved */
-    console.error('Email send failed:', err);
+  if (!GMAIL_USER || !GMAIL_PASS) {
+    emailError = 'GMAIL_USER or GMAIL_APP_PASSWORD env var is missing';
+    console.error(emailError);
+  } else {
+    try {
+      const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: { user: GMAIL_USER, pass: GMAIL_PASS },
+      });
+
+      /* verify() surfaces auth problems with a clear error */
+      await transporter.verify();
+
+      const info = await transporter.sendMail({
+        from: `"Rapid Solution" <${GMAIL_USER}>`,
+        to: email,
+        subject: 'Your Rapid Solution Demo Access',
+        html: buildEmailHTML(name),
+      });
+
+      emailSent = true;
+      console.log('Email sent:', info.messageId, '→', email);
+    } catch (err) {
+      emailError = err?.message || String(err);
+      console.error('Email send failed:', emailError);
+    }
   }
 
-  return res.status(200).json({ success: true });
+  /* Lead is saved regardless; report email status so the client can see it. */
+  return res.status(200).json({ success: true, emailSent, emailError });
 }
 
 function buildEmailHTML(name) {
