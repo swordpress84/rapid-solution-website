@@ -1,4 +1,4 @@
-/* Credentials are loaded from config.js (gitignored). See config.example.js. */
+/* Credentials live in Vercel env vars — handled by /api/submit serverless function. */
 
 /* ── Particle system ── */
 (function initParticles() {
@@ -203,28 +203,16 @@ function setLoading(loading) {
   spinner.classList.toggle('hidden', !loading);
 }
 
-/* ── Airtable submission ── */
+/* ── Airtable submission via serverless function ── */
 async function submitToAirtable(name, email, phone) {
-  const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
-  const res  = await fetch(url, {
+  const res = await fetch('/api/submit', {
     method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${AIRTABLE_PAT}`,
-      'Content-Type':  'application/json',
-    },
-    body: JSON.stringify({
-      fields: {
-        Name:  name,
-        Email: email,
-        Phone: phone,
-        Source: 'Website Demo Form',
-        'Submitted At': new Date().toISOString(),
-      }
-    }),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, phone }),
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
-    throw new Error(err?.error?.message || 'Submission failed');
+    throw new Error(err?.error || 'Submission failed');
   }
   return res.json();
 }
