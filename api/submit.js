@@ -82,7 +82,9 @@ export default async function handler(req, res) {
       const info = await transporter.sendMail({
         from: `"Rapid Solution" <${GMAIL_USER}>`,
         to: email,
+        replyTo: GMAIL_USER,
         subject: 'Your Rapid Solution Demo Access',
+        text: buildEmailText(name),   // plain-text part improves inbox placement
         html: buildEmailHTML(name),
       });
 
@@ -96,6 +98,26 @@ export default async function handler(req, res) {
 
   /* Lead is saved regardless; report email status so the client can see it. */
   return res.status(200).json({ success: true, emailSent, emailError });
+}
+
+function buildEmailText(name) {
+  return `Hey ${name}!
+
+Thanks for your interest in Rapid Solution. We're thrilled to have you on board!
+
+Our team has received your details and one of our specialists will reach out to you within 24 hours to walk you through a personalized demo.
+
+What happens next:
+- Our team reviews your details
+- We send you a personalized demo link
+- You see exactly how to automate your growth
+
+Got questions? Just reply to this email — we're here to help.
+
+Cheers,
+The Rapid Solution Team
+
+© 2026 Rapid Solution. All rights reserved.`;
 }
 
 function buildEmailHTML(name) {
