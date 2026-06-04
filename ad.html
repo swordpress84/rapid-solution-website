@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapid Solution — ৫০% ছাড় অফার</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root{
+      --bg:#080b14; --surface:#0e1220; --surface2:#141928;
+      --accent:#6c63ff; --accent-l:#a78bfa; --accent2:#ff6b6b;
+      --green:#43e97b; --gold:#f7971e; --text:#e8eaf0; --muted:#8892a4;
+    }
+
+    html,body{background:#05060c;}
+    body{
+      font-family:'Hind Siliguri',sans-serif;
+      min-height:100vh;
+      display:flex; align-items:flex-start; justify-content:center;
+      padding:0;
+    }
+
+    /* Auto-fit the fixed card to the viewport for preview (does not affect aspect) */
+    .stage{ transform-origin:top center; }
+
+    /* ── AD CARD — 1080 x 1350 (4:5) ── */
+    .ad-card{
+      position:relative;
+      width:1080px; height:1350px;
+      background:
+        radial-gradient(1000px 700px at 75% -10%, rgba(108,99,255,0.22), transparent 60%),
+        radial-gradient(900px 700px at 10% 110%, rgba(255,107,107,0.12), transparent 55%),
+        var(--bg);
+      overflow:hidden;
+      color:var(--text);
+      isolation:isolate;
+    }
+
+    canvas#px{position:absolute; inset:0; z-index:0;}
+
+    .grid{
+      position:absolute; inset:0; z-index:0;
+      background-image:
+        linear-gradient(rgba(108,99,255,0.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(108,99,255,0.05) 1px,transparent 1px);
+      background-size:70px 70px;
+      mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 35%,transparent 100%);
+    }
+    .orb{position:absolute; border-radius:50%; filter:blur(110px); z-index:0;}
+    .o1{width:560px;height:560px;background:rgba(108,99,255,0.30);top:-160px;right:-140px;animation:float1 9s ease-in-out infinite;}
+    .o2{width:480px;height:480px;background:rgba(255,107,107,0.16);bottom:-160px;left:-120px;animation:float1 11s ease-in-out infinite reverse;}
+    @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-26px)}}
+
+    /* content wrapper */
+    .wrap{
+      position:relative; z-index:2;
+      height:100%;
+      padding:70px 72px 60px;
+      display:flex; flex-direction:column;
+    }
+
+    /* brand */
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      opacity:0; animation:dropIn .7s ease .1s forwards;
+    }
+    .brand .bolt{font-size:34px; filter:drop-shadow(0 0 12px var(--accent));}
+    .brand .name{font-family:'Space Grotesk',sans-serif; font-size:30px; font-weight:600; letter-spacing:-.5px;}
+    .brand .name b{font-weight:700; background:linear-gradient(135deg,var(--accent),var(--accent-l)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+
+    /* limited badge */
+    .badge{
+      margin-top:46px;
+      align-self:flex-start;
+      display:inline-flex; align-items:center; gap:10px;
+      background:rgba(255,107,107,0.12);
+      border:1.5px solid rgba(255,107,107,0.45);
+      color:#ff9a9a; font-weight:600; font-size:24px;
+      padding:11px 24px; border-radius:60px;
+      opacity:0; animation:pop .6s cubic-bezier(.34,1.56,.64,1) .3s forwards, glowPulse 2.2s ease-in-out 1s infinite;
+    }
+    .badge .dot{width:11px;height:11px;border-radius:50%;background:var(--accent2);box-shadow:0 0 12px var(--accent2);animation:blink 1.4s infinite;}
+
+    /* hero discount */
+    .hero{
+      margin-top:30px;
+      opacity:0; animation:clipUp .8s cubic-bezier(.22,1,.36,1) .5s forwards;
+    }
+    .hero .big{
+      font-family:'Baloo Da 2',cursive;
+      font-weight:800; line-height:.95;
+      font-size:200px; letter-spacing:-4px;
+      background:linear-gradient(120deg,#a78bfa 0%,#6c63ff 38%,#ff6b6b 100%);
+      background-size:220%;
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      filter:drop-shadow(0 10px 40px rgba(108,99,255,.45));
+      animation:gradShift 4.5s ease infinite;
+    }
+    .hero .flat{
+      font-family:'Baloo Da 2',cursive;
+      font-weight:700; font-size:76px; line-height:1; margin-top:-6px;
+      letter-spacing:-1px; color:#fff;
+    }
+    .hero .flat em{
+      font-style:normal;
+      background:linear-gradient(135deg,var(--accent-l),var(--accent));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+
+    /* subline */
+    .sub{
+      margin-top:24px; font-size:34px; font-weight:500; line-height:1.45;
+      color:#c7ccd8; max-width:760px;
+      opacity:0; animation:fadeUp .7s ease .85s forwards;
+    }
+    .sub b{color:#fff; font-weight:700;}
+
+    /* price */
+    .price{
+      margin-top:40px;
+      display:flex; align-items:flex-end; gap:26px;
+      opacity:0; animation:fadeUp .7s ease 1.0s forwards;
+    }
+    .price .old{
+      position:relative; font-family:'Baloo Da 2',cursive;
+      font-size:62px; font-weight:600; color:var(--muted);
+    }
+    .price .old::after{
+      content:''; position:absolute; left:-6px; right:-6px; top:52%;
+      height:5px; border-radius:4px; background:var(--accent2);
+      transform:scaleX(0); transform-origin:left;
+      animation:strike .6s ease 1.45s forwards;
+      box-shadow:0 0 12px rgba(255,107,107,.6);
+    }
+    .price .newwrap{display:flex; align-items:flex-end; gap:8px;}
+    .price .new{
+      font-family:'Baloo Da 2',cursive; font-weight:800;
+      font-size:122px; line-height:.9; letter-spacing:-3px;
+      color:#fff;
+      text-shadow:0 6px 36px rgba(108,99,255,.5);
+      animation:breathe 3s ease-in-out 1.6s infinite;
+    }
+    .price .per{font-size:42px; font-weight:600; color:#c7ccd8; padding-bottom:14px;}
+
+    /* features */
+    .feat{ margin-top:auto; padding-top:30px; display:grid; grid-template-columns:1fr 1fr; gap:18px 30px; }
+    .feat li{
+      list-style:none; display:flex; align-items:center; gap:14px;
+      font-size:29px; font-weight:500; color:#e3e6ee;
+      opacity:0; transform:translateX(-16px);
+      animation:slideIn .55s ease forwards;
+    }
+    .feat li .ic{
+      flex-shrink:0; width:42px;height:42px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:20px; color:var(--accent-l);
+      background:rgba(108,99,255,.16); border:1px solid rgba(108,99,255,.3);
+    }
+    .feat li:nth-child(1){animation-delay:1.55s}
+    .feat li:nth-child(2){animation-delay:1.68s}
+    .feat li:nth-child(3){animation-delay:1.81s}
+    .feat li:nth-child(4){animation-delay:1.94s}
+
+    /* platforms */
+    .plat{
+      margin-top:34px; display:flex; flex-wrap:wrap; gap:14px;
+      opacity:0; animation:fadeUp .6s ease 2.05s forwards;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:9px;
+      font-size:24px; font-weight:600;
+      padding:11px 22px; border-radius:60px;
+      background:var(--surface2); border:1px solid var(--border,rgba(255,255,255,.08));
+    }
+    .p-fb{color:#6aa9f0;border-color:rgba(74,144,226,.4)}
+    .p-ig{color:#f06aa0;border-color:rgba(225,48,108,.4)}
+    .p-tt{color:#7fd9e0;border-color:rgba(105,201,208,.4)}
+    .p-li{color:#7cb6e6;border-color:rgba(91,163,217,.4)}
+
+    /* CTA */
+    .cta-row{
+      margin-top:40px; display:flex; align-items:center; gap:28px;
+      opacity:0; animation:pop .6s cubic-bezier(.34,1.56,.64,1) 2.2s forwards;
+    }
+    .cta{
+      position:relative; overflow:hidden;
+      font-family:'Hind Siliguri',sans-serif;
+      font-size:34px; font-weight:700; color:#fff;
+      padding:24px 52px; border:none; border-radius:70px; cursor:pointer;
+      background:linear-gradient(135deg,#6c63ff,#a78bfa);
+      box-shadow:0 14px 40px rgba(108,99,255,.55);
+      animation:ctaPulse 2.4s ease-in-out 2.6s infinite;
+    }
+    .cta .shine{
+      position:absolute; top:0; left:-120%; width:55%; height:100%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+      animation:shine 3.2s ease-in-out 3s infinite;
+    }
+    .urgency{font-size:25px; font-weight:600; color:#ffb46a;}
+    .urgency .hour{filter:drop-shadow(0 0 8px rgba(247,151,30,.6));}
+
+    /* rotating seal */
+    .seal{
+      position:absolute; top:96px; right:70px; z-index:3;
+      width:210px; height:210px; border-radius:50%;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      background:radial-gradient(circle at 30% 25%,#7b72ff,#5a51e6);
+      box-shadow:0 18px 50px rgba(108,99,255,.55), inset 0 0 0 2px rgba(255,255,255,.18);
+      opacity:0; animation:sealIn .7s cubic-bezier(.34,1.56,.64,1) .7s forwards;
+    }
+    .seal::before{
+      content:''; position:absolute; inset:10px; border-radius:50%;
+      border:2px dashed rgba(255,255,255,.55);
+      animation:spin 14s linear infinite;
+    }
+    .seal .s-top{font-family:'Baloo Da 2',cursive;font-weight:800;font-size:74px;color:#fff;line-height:.9;}
+    .seal .s-bot{font-family:'Hind Siliguri',sans-serif;font-weight:700;font-size:30px;color:#fff;margin-top:2px;}
+
+    /* footer line */
+    .foot{
+      position:absolute; left:72px; bottom:34px; right:72px; z-index:2;
+      display:flex; align-items:center; justify-content:space-between;
+      font-size:22px; color:var(--muted); font-weight:500;
+      opacity:0; animation:fadeUp .6s ease 2.4s forwards;
+    }
+    .foot .site{color:#c7ccd8;}
+
+    /* ── keyframes ── */
+    @keyframes dropIn{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:none}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+    @keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+    @keyframes sealIn{from{opacity:0;transform:scale(.4) rotate(-25deg)}to{opacity:1;transform:scale(1) rotate(-12deg)}}
+    @keyframes clipUp{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:none}}
+    @keyframes slideIn{to{opacity:1;transform:none}}
+    @keyframes strike{to{transform:scaleX(1)}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    @keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+    @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(28px,-24px)}}
+    @keyframes glowPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,107,107,.0)}50%{box-shadow:0 0 0 10px rgba(255,107,107,.10)}}
+    @keyframes ctaPulse{0%,100%{box-shadow:0 14px 40px rgba(108,99,255,.45)}50%{box-shadow:0 14px 54px rgba(108,99,255,.75)}}
+    @keyframes shine{0%{left:-120%}45%{left:130%}100%{left:130%}}
+  </style>
+</head>
+<body>
+  <div class="stage" id="stage">
+    <div class="ad-card" id="card">
+      <canvas id="px"></canvas>
+      <div class="grid"></div>
+      <div class="orb o1"></div>
+      <div class="orb o2"></div>
+
+      <!-- rotating discount seal -->
+      <div class="seal">
+        <span class="s-top">৫০%</span>
+        <span class="s-bot">ছাড়</span>
+      </div>
+
+      <div class="wrap">
+        <div class="brand">
+          <span class="bolt">⚡</span>
+          <span class="name">Rapid<b>Solution</b></span>
+        </div>
+
+        <div class="badge">
+          <span class="dot"></span>
+          🔥 সীমিত সময়ের অফার
+        </div>
+
+        <div class="hero">
+          <div class="big">৫০%</div>
+          <div class="flat">ফ্ল্যাট <em>ছাড়!</em></div>
+        </div>
+
+        <p class="sub">
+          আপনার সোশ্যাল মিডিয়া অটোমেশন এখন <b>অর্ধেক দামে।</b><br>
+          পোস্ট, রিপ্লাই, কমেন্ট আর লিড — সবকিছু অটোপাইলটে।
+        </p>
+
+        <div class="price">
+          <span class="old">৪,০০০৳</span>
+          <div class="newwrap">
+            <span class="new">২,০০০৳</span>
+            <span class="per">/ মাস</span>
+          </div>
+        </div>
+
+        <ul class="feat">
+          <li><span class="ic">✦</span> অটো পোস্ট ও শিডিউলিং</li>
+          <li><span class="ic">✦</span> অটো কমেন্ট ও রিপ্লাই</li>
+          <li><span class="ic">✦</span> হট লিড ডিটেকশন</li>
+          <li><span class="ic">✦</span> ইউনিফাইড ইনবক্স</li>
+        </ul>
+
+        <div class="plat">
+          <span class="pill p-fb">📘 Facebook</span>
+          <span class="pill p-ig">📸 Instagram</span>
+          <span class="pill p-tt">🎵 TikTok</span>
+          <span class="pill p-li">💼 LinkedIn</span>
+        </div>
+
+        <div class="cta-row">
+          <button class="cta">এখনই শুরু করুন →<span class="shine"></span></button>
+          <span class="urgency"><span class="hour">⏳</span> অফার শেষ হওয়ার আগেই!</span>
+        </div>
+      </div>
+
+      <div class="foot">
+        <span class="site">rapid-solution-website-ywni.vercel.app</span>
+        <span>সকল প্ল্যাটফর্মে একসাথে চালান</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* particle field — same spirit as the website */
+    (function(){
+      const c=document.getElementById('px'), x=c.getContext('2d');
+      const card=document.getElementById('card');
+      function size(){c.width=card.offsetWidth; c.height=card.offsetHeight;}
+      size();
+      const N=70, ps=[];
+      for(let i=0;i<N;i++)ps.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.8+.4,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,a:Math.random()*.5+.1});
+      function draw(){
+        x.clearRect(0,0,c.width,c.height);
+        for(let i=0;i<ps.length;i++){
+          for(let j=i+1;j<ps.length;j++){
+            const dx=ps[i].x-ps[j].x, dy=ps[i].y-ps[j].y, d=Math.hypot(dx,dy);
+            if(d<130){x.beginPath();x.moveTo(ps[i].x,ps[i].y);x.lineTo(ps[j].x,ps[j].y);x.strokeStyle='rgba(108,99,255,'+(.12*(1-d/130))+')';x.lineWidth=.6;x.stroke();}
+          }
+        }
+        ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>c.width)p.vx*=-1;if(p.y<0||p.y>c.height)p.vy*=-1;x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fillStyle='rgba(167,139,250,'+p.a+')';x.fill();});
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    /* Card is a fixed 1080x1350 so it exports pixel-perfect.
+       To view the whole card in a normal browser window, zoom out (Ctrl + minus). */
+  </script>
+</body>
+</html>
