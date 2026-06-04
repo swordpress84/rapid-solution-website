@@ -20,16 +20,11 @@ html {
   scroll-behavior: smooth;
   background: var(--bg);           /* kills white overscroll at top */
   overscroll-behavior: none;       /* prevents rubber-band white flash */
-  scroll-padding-top: 72px;        /* anchor offset = nav height (no prior-section bleed) */
-}
-
-/* Sections land flush under the nav; breathing room is internal padding-top */
-.features, .how, .social-proof, .pricing, .hero {
-  scroll-margin-top: 72px;
+  scroll-padding-top: 72px;        /* anchor offset = nav height. ONLY this — do NOT
+                                      also add scroll-margin-top, they STACK (double offset). */
 }
 @media (max-width: 640px) {
   html { scroll-padding-top: 64px; }
-  .features, .how, .social-proof, .pricing, .hero { scroll-margin-top: 64px; }
 }
 
 body {
