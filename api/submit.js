@@ -84,8 +84,7 @@ export default async function handler(req, res) {
         to: email,
         replyTo: GMAIL_USER,
         subject: `Thanks for your demo request, ${name}`,
-        text: buildEmailText(name),   // plain-text part improves inbox placement
-        html: buildEmailHTML(name),
+        text: buildEmailText(name),   // plain-text ONLY — looks human, better inbox placement
       });
 
       emailSent = true;
@@ -103,82 +102,11 @@ export default async function handler(req, res) {
 function buildEmailText(name) {
   return `Hi ${name},
 
-Thanks for requesting a demo. We've received your details and one of our specialists will reach out within 24 hours to walk you through how Rapid Solution can help you.
+Thanks for requesting a demo of Rapid Solution. I've got your details and someone from our team will reach out within 24 hours to set up your personalized walkthrough.
 
-Here's what happens next:
-1. We review your details.
-2. We send you a personalized demo link.
-3. You see exactly how it works for your accounts.
+If you have any questions in the meantime, just reply to this email — it comes straight to us.
 
-If you have any questions, just reply to this email — it comes straight to our team.
-
-Best regards,
-The Rapid Solution Team
-
-You received this email because you requested a demo at Rapid Solution.`;
+Talk soon,
+The Rapid Solution Team`;
 }
 
-function buildEmailHTML(name) {
-  return `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rapid Solution</title>
-</head>
-<body style="margin:0;padding:0;background:#f4f5f7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:#1a1d24;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4f5f7;padding:32px 16px;">
-    <tr>
-      <td align="center">
-        <table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;background:#ffffff;border-radius:8px;border:1px solid #e6e8eb;">
-          <tr>
-            <td style="padding:32px 36px;">
-
-              <p style="margin:0 0 24px;font-size:18px;font-weight:700;color:#6c63ff;">Rapid Solution</p>
-
-              <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#1a1d24;">Hi ${escapeHtml(name)},</p>
-
-              <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#3a3f4a;">
-                Thanks for requesting a demo. We've received your details and one of our specialists will reach out within 24 hours to walk you through how Rapid Solution can help you.
-              </p>
-
-              <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#3a3f4a;">
-                Here's what happens next:
-              </p>
-              <p style="margin:0 0 8px;font-size:16px;line-height:1.6;color:#3a3f4a;">1. We review your details.</p>
-              <p style="margin:0 0 8px;font-size:16px;line-height:1.6;color:#3a3f4a;">2. We send you a personalized demo link.</p>
-              <p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:#3a3f4a;">3. You see exactly how it works for your accounts.</p>
-
-              <p style="margin:0 0 24px;font-size:16px;line-height:1.6;color:#3a3f4a;">
-                If you have any questions, just reply to this email — it comes straight to our team.
-              </p>
-
-              <p style="margin:0;font-size:16px;line-height:1.6;color:#1a1d24;">
-                Best regards,<br />
-                The Rapid Solution Team
-              </p>
-
-              <p style="margin:28px 0 0;padding-top:20px;border-top:1px solid #e6e8eb;font-size:13px;line-height:1.5;color:#8a909b;">
-                You received this email because you requested a demo at Rapid Solution.
-              </p>
-
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
-</body>
-</html>
-  `;
-}
-
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
