@@ -20,16 +20,16 @@ html {
   scroll-behavior: smooth;
   background: var(--bg);           /* kills white overscroll at top */
   overscroll-behavior: none;       /* prevents rubber-band white flash */
-  scroll-padding-top: 90px;        /* anchor offset for fixed nav */
+  scroll-padding-top: 72px;        /* anchor offset = nav height (no prior-section bleed) */
 }
 
-/* Per-section scroll offset so headings aren't hidden under nav */
+/* Sections land flush under the nav; breathing room is internal padding-top */
 .features, .how, .social-proof, .pricing, .hero {
-  scroll-margin-top: 90px;
+  scroll-margin-top: 72px;
 }
 @media (max-width: 640px) {
-  html { scroll-padding-top: 80px; }
-  .features, .how, .social-proof, .pricing, .hero { scroll-margin-top: 80px; }
+  html { scroll-padding-top: 64px; }
+  .features, .how, .social-proof, .pricing, .hero { scroll-margin-top: 64px; }
 }
 
 body {
@@ -335,7 +335,7 @@ body {
 .logos-strip {
   position: relative; z-index: 1;
   display: flex; align-items: center; gap: 24px;
-  max-width: 1200px; margin: 0 auto 80px;
+  max-width: 1200px; margin: 0 auto 50px;
   padding: 0 40px;
 }
 .logos-label { font-size: 13px; color: var(--muted); white-space: nowrap; }
@@ -358,8 +358,8 @@ body {
 /* ── Sections ── */
 .features, .how, .social-proof {
   position: relative; z-index: 1;
-  max-width: 1200px; margin: 0 auto 70px;
-  padding: 0 40px;
+  max-width: 1200px; margin: 0 auto 40px;
+  padding: 30px 40px 0;
 }
 
 .section-label {
@@ -456,7 +456,7 @@ body {
 .pricing {
   position: relative; z-index: 1;
   max-width: 1240px; margin: 0 auto 80px;
-  padding: 0 40px;
+  padding: 30px 40px 0;
   overflow: visible;
 }
 
@@ -786,8 +786,8 @@ body {
   .nav-links { gap: 24px; }
   .hero { padding: 110px 24px 70px; gap: 40px; }
   .hero-visual { flex: 0 0 360px; }
-  .features, .how, .social-proof, .pricing { padding: 0 24px; margin-bottom: 60px; }
-  .logos-strip { padding: 0 24px; margin-bottom: 70px; }
+  .features, .how, .social-proof, .pricing { padding: 30px 24px 0; margin-bottom: 30px; }
+  .logos-strip { padding: 0 24px; margin-bottom: 40px; }
   .pricing-grid { gap: 0 16px; }
   .pc { padding: 32px 24px 28px; }
   .pc.popular { padding: 38px 26px 30px; }
@@ -857,7 +857,7 @@ body {
   .hero-visual { max-width: 100%; }
 
   /* Sections */
-  .features, .how, .social-proof, .pricing { padding: 0 18px; margin-bottom: 50px; }
+  .features, .how, .social-proof, .pricing { padding: 26px 18px 0; margin-bottom: 24px; }
   .section-title { font-size: clamp(26px, 7vw, 36px); letter-spacing: -1px; }
   .section-sub { font-size: 15px; margin-bottom: 36px; }
   .section-label { font-size: 11px; letter-spacing: 2px; margin-bottom: 12px; }
@@ -899,7 +899,7 @@ body {
   .btn-primary.large { padding: 15px 28px; font-size: 16px; }
 
   /* Logos strip */
-  .logos-strip { padding: 0 18px; margin-bottom: 60px; }
+  .logos-strip { padding: 0 18px; margin-bottom: 34px; }
   .logo-pill { font-size: 12px; padding: 7px 14px; }
 
   /* Footer */
